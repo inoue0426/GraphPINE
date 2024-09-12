@@ -7,10 +7,10 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import torch
+from adjustText import adjust_text
 from matplotlib import cm
 from torch_geometric.data import Batch, Data
 from torch_geometric.utils import subgraph
-from adjustText import adjust_text
 
 from .utils import fetch_drug_name
 
@@ -409,7 +409,7 @@ def plot_gene_interaction_network(
 
     # Draw the graph with normalized node sizes and colors based on dti values
     fig, ax = plt.subplots(figsize=figsize, dpi=dpi)
-    
+
     # Choose layout based on the layout parameter
     if layout == "spring":
         pos = nx.spring_layout(G, seed=seed)
@@ -421,33 +421,51 @@ def plot_gene_interaction_network(
         pos = nx.shell_layout(G)
     else:
         pos = nx.spring_layout(G, seed=seed)  # Default to spring layout
-    
+
     nx.draw_networkx_edges(
         G, pos, alpha=0.5, edge_color="gray", width=2, ax=ax
     )  # Set edge properties
-    
+
     # Draw nodes with colors and shapes based on DTI
     for node, (x, y) in pos.items():
         if dti[node] > 0:
             nx.draw_networkx_nodes(
-                G, pos, nodelist=[node], node_color=[node_colors[list(G.nodes).index(node)]],
+                G,
+                pos,
+                nodelist=[node],
+                node_color=[node_colors[list(G.nodes).index(node)]],
                 node_size=normalized_node_sizes[list(G.nodes).index(node)],
-                ax=ax, node_shape='*', edgecolors='black', linewidths=1
+                ax=ax,
+                node_shape="*",
+                edgecolors="black",
+                linewidths=1,
             )
         else:
             nx.draw_networkx_nodes(
-                G, pos, nodelist=[node], node_color=[node_colors[list(G.nodes).index(node)]],
+                G,
+                pos,
+                nodelist=[node],
+                node_color=[node_colors[list(G.nodes).index(node)]],
                 node_size=normalized_node_sizes[list(G.nodes).index(node)],
-                ax=ax, node_shape='o', edgecolors='black', linewidths=1
+                ax=ax,
+                node_shape="o",
+                edgecolors="black",
+                linewidths=1,
             )
 
     label_pos = {k: (v[0], v[1] + 0.13) for k, v in pos.items()}
-    label_pos['TOP1'] = (pos['TOP1'][0], pos['TOP1'][1] + 0.3)
+    label_pos["TOP1"] = (pos["TOP1"][0], pos["TOP1"][1] + 0.3)
 
     # ラベルの描画（背景付き）
-    nx.draw_networkx_labels(G, label_pos, font_size=10, font_weight='bold', ax=ax,
-                            bbox=dict(facecolor='white', edgecolor='none', alpha=0.7, pad=0.5))
-    
+    nx.draw_networkx_labels(
+        G,
+        label_pos,
+        font_size=10,
+        font_weight="bold",
+        ax=ax,
+        bbox=dict(facecolor="white", edgecolor="none", alpha=0.7, pad=0.5),
+    )
+
     ax.set_title(f"{drug}-Related Gene Interaction Network", fontsize=font_size)
 
     # Add colorbar using the axes of the plot

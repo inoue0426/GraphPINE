@@ -186,7 +186,7 @@ class DataProcessor:
             Dict: Dictionary containing drug and gene data for the specified NSC.
         """
         drug_data = drug_dict[nsc]
-        
+
         gene_data = DataProcessor.create_gene_data_list(
             gene_dict,
             cell_lines,
@@ -195,7 +195,7 @@ class DataProcessor:
             dti,
             use_data_types,
         )
-        
+
         return {
             "drug": drug_data,
             "gene": gene_data,
@@ -345,21 +345,21 @@ class DataManager:
             Dict: A dictionary containing all data loaders for train, validation, and test sets.
         """
         return {
-            'train': {
-                'drug': self.train_drug_loader,
-                'gene': self.train_gene_loader,
-                'target': self.train_target_loader
+            "train": {
+                "drug": self.train_drug_loader,
+                "gene": self.train_gene_loader,
+                "target": self.train_target_loader,
             },
-            'valid': {
-                'drug': self.valid_drug_loader,
-                'gene': self.valid_gene_loader,
-                'target': self.valid_target_loader
+            "valid": {
+                "drug": self.valid_drug_loader,
+                "gene": self.valid_gene_loader,
+                "target": self.valid_target_loader,
             },
-            'test': {
-                'drug': self.test_drug_loader,
-                'gene': self.test_gene_loader,
-                'target': self.test_target_loader
-            }
+            "test": {
+                "drug": self.test_drug_loader,
+                "gene": self.test_gene_loader,
+                "target": self.test_target_loader,
+            },
         }
 
     def get_batch_size(self):
@@ -379,6 +379,7 @@ class DataManager:
             List[str]: List of data types being used (e.g., ['exp', 'met', 'cop', 'mut']).
         """
         return self.use_data_types
+
     # Usage:
     # config = {
     #     "NSC": "123456",  # Specify the NSC number
@@ -390,13 +391,13 @@ class DataManager:
     #
     # # Get data for the specified NSC
     # nsc_data = data_manager.get_nsc_data()
-    # 
+    #
     # # Get all data loaders
     # loaders = data_manager.get_data_loaders()
     # train_gene_loader = loaders['train']['gene']
-    # 
+    #
     # # Get batch size
     # batch_size = data_manager.get_batch_size()
-    # 
+    #
     # # Get data types being used
     # data_types = data_manager.get_use_data_types()
