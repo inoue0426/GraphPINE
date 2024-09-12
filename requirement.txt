@@ -1,0 +1,24 @@
+name: GIPNet
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip=24.0
+  - ipykernel
+  - pip:
+      - accelerate==0.33.0
+      - numpy==1.26.4
+      - pandas==2.2.2
+      - matplotlib==3.9.2
+      - scikit-learn==1.2.2
+      - torch==2.4.0
+      - torch_geometric==2.5.3
+      - torch_scatter==2.1.2
+      - torchaudio==2.4.0
+      - torchvision==0.19.0
+      - tqdm==4.66.5
+      - requests==2.32.3
+      - plotly==5.23.0
+      - networkx==3.3
+      - seaborn==0.13.2
