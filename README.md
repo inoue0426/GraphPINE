@@ -36,15 +36,6 @@ This quick start guide provides instructions on how to run PRISM predictions usi
 
    After starting the Docker container, access the Jupyter Notebook by navigating to `http://localhost:9999/notebooks/Tutorial-pretrained_model.ipynb` in your web browser and run all cells. This notebook will guide you through the basic usage of PRISM and demonstrate example predictions.
 
-## Full-Size Prediction
-
-Follow the same procedure as above and execute the command `python predict.py` to perform full-size predictions with a pre-trained model.
-
-## Full-Size Training
-
-For training, follow the initial steps as described above. When ready, run the training script with `python train.py --config [YOUR_CONFIG]`.
-
-
 ## Requirements
 
 ```bash
