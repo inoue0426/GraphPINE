@@ -1,7 +1,6 @@
 # PRISM: **PR**opagating **I**mportance for **S**tructured **M**odel interpretability
 
-![Screenshot 2024-09-03 at 23 03 03](https://github.com/user-attachments/assets/33c55657-b3fc-4f56-ac43-b89dbe605605)
-
+<img width="1155" alt="Screenshot 2024-09-12 at 17 38 09" src="https://github.com/user-attachments/assets/6640af4a-ff0d-42f9-881e-bc03c9596151">
 
 This is the official implementation for **PRISM: Enhancing Interpretable Graph Neural Networks with Prior Knowledge through Importance Propagation**.
 
