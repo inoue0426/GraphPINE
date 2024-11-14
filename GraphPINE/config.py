@@ -35,14 +35,14 @@ BASE_CONFIG = {
 def get_model_config(model_type, base_config=BASE_CONFIG):
     model_configs = {
         "GAT": {
-            "BATCH_SIZE": 100,
+            "BATCH_SIZE": 100 if torch.cuda.is_available() else 5,
             "IMPORTANCE_DECAY": 0.9,
             "IMPORTANCE_REGULARIZATION_WEIGHT": 0.01,
             "IMPORTANCE_THRESHOLD": 1e-05,
             "MODEL_NAME": "GAT",  # Added MODEL_NAME
         },
         "GCN": {
-            "BATCH_SIZE": 70,
+            "BATCH_SIZE": 70 if torch.cuda.is_available() else 5,
             "IMPORTANCE_DECAY": 0.8,
             "IMPORTANCE_REGULARIZATION_WEIGHT": 0.01,
             "IMPORTANCE_THRESHOLD": 0.001,
@@ -50,7 +50,7 @@ def get_model_config(model_type, base_config=BASE_CONFIG):
             "MODEL_NAME": "GCN",  # Added MODEL_NAME
         },
         "MPNN": {
-            "BATCH_SIZE": 100,
+            "BATCH_SIZE": 100 if torch.cuda.is_available() else 5,
             "IMPORTANCE_DECAY": 0.8,
             "IMPORTANCE_REGULARIZATION_WEIGHT": 0.01,
             "IMPORTANCE_THRESHOLD": 0.001,
@@ -58,7 +58,7 @@ def get_model_config(model_type, base_config=BASE_CONFIG):
             "MODEL_NAME": "MPNN",  # Added MODEL_NAME
         },
         "GT": {
-            "BATCH_SIZE": 70,
+            "BATCH_SIZE": 70 if torch.cuda.is_available() else 5,
             "IMPORTANCE_DECAY": 0.8,
             "IMPORTANCE_REGULARIZATION_WEIGHT": 0.02,
             "IMPORTANCE_THRESHOLD": 0.001,
@@ -66,7 +66,7 @@ def get_model_config(model_type, base_config=BASE_CONFIG):
             "MODEL_NAME": "GT",  # Added MODEL_NAME
         },
         "GINE": {
-            "BATCH_SIZE": 100,
+            "BATCH_SIZE": 100 if torch.cuda.is_available() else 5,
             "IMPORTANCE_DECAY": 0.9,
             "IMPORTANCE_REGULARIZATION_WEIGHT": 0.02,
             "IMPORTANCE_THRESHOLD": 1e-05,
