@@ -11,7 +11,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from sklearn.metrics import (accuracy_score, average_precision_score, f1_score,
                              fbeta_score, precision_score, recall_score,
-                             roc_auc_score)
+                             roc_auc_score, balanced_accuracy_score)
 
 
 @lru_cache(maxsize=1000)
@@ -92,6 +92,7 @@ def calculate_metrics(
     f2 = fbeta_score(targets, predictions_binary, beta=2)
     specificity = recall_score(targets, predictions_binary, pos_label=0)
     npv = precision_score(targets, predictions_binary, pos_label=0)
+    balanced_accuracy = balanced_accuracy_score(targets, predictions_binary)
 
     # Check if there are more than one class in targets to calculate AUC-ROC and AUC-PR
     if len(np.unique(targets)) > 1:
@@ -112,6 +113,7 @@ def calculate_metrics(
         "AUC-PR": auc_pr,
         "Specificity": specificity,
         "NPV": npv,
+        "balanced_accuracy": balanced_accuracy,
     }
 
 
