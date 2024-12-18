@@ -9,9 +9,9 @@ import requests
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from sklearn.metrics import (accuracy_score, average_precision_score, f1_score,
-                             fbeta_score, precision_score, recall_score,
-                             roc_auc_score, balanced_accuracy_score)
+from sklearn.metrics import (accuracy_score, average_precision_score,
+                             balanced_accuracy_score, f1_score, fbeta_score,
+                             precision_score, recall_score, roc_auc_score)
 
 
 @lru_cache(maxsize=1000)
